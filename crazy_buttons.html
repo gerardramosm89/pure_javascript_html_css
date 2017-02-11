@@ -6,17 +6,53 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
-    * {
-      font-family: 'Roboto', sans-serif;
-    }
+      * {
+        font-family: 'Roboto', sans-serif;
+      }
 
+      .btn-crazy {
+        position:absolute;
+        top:50px;
+        left:40%;
+        width:20%;
+
+        transition: ease .5s all;
+      }
     </style>
   </head>
   <body>
 
-
-
+    <div class="text-center">
+      <button type="button" class="btn-crazy btn btn-lg btn-primary">
+        Click me!
+      </button>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn-crazy btn btn-lg btn-success">
+        Click me!
+      </button>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn-crazy btn btn-lg btn-info">
+        Click me!
+      </button>
+    </div>
     <script>
+    const crazyButtons = document.querySelectorAll('.btn-crazy');
+    console.log(crazyButtons);
+    crazyButtons.forEach(crazybtn => crazybtn.addEventListener('mouseenter', goCrazy));
+
+    function goCrazy(e){
+      const button = e.target;
+      console.log("entered go crazy");
+      //get random number for left offset
+      const offsetLeft = Math.random() * (window.innerWidth - button.clientWidth);
+      const offsetTop = Math.random() * (window.innerHeight - button.clientHeight);
+      //get random number for top offset
+      button.style.top = offsetTop + "px";
+      button.style.left = offsetLeft + "px";
+      //apply numbers to button
+    }
 
 
 
