@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Testing grounds</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+      * {
+        font-family: 'Roboto', sans-serif;
+      }
+      body {
+        background: #efefef;
+      }
+      .accordion {
+        background: #fff;
+        border-radius:5px;
+        padding:30px;
+        margin-top:50px;
+      }
+
+      .question {
+        border-top: 1px solid #eee;
+        padding:20px;
+        cursor:pointer;
+        position: relative;
+      }
+
+      .question h2 {
+        font-size:20px;
+        margin: 0;
+        color: #c00c00;
+      }
+
+      .question .glyphicon {
+        position: absolute;
+        right: 20px;
+        top: 0;
+        height:100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .answer {
+        transition: 1s cubic-bezier(.175, .885, .32, 1.275) all;
+        max-height:0;
+        overflow: hidden;
+      }
+
+      answer p {
+        padding: 20px;
+      }
+
+      .accordion li.open .answer {
+        max-height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+
+<div class="container">
+  <div class="accordion">
+    <ul class="list-unstyled">
+      <li>
+        <div class="question">
+          <h2>Will I be rich?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>Absolutely! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem dolorum dolore totam quo commodi sapiente in, libero, consectetur similique, labore non provident dolorem quibusdam quos, corporis facere est quod deserunt.</p>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <h2>What's for dinner?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>Whatever you want! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem dolorum dolore totam quo commodi sapiente in, libero, consectetur similique, labore non provident dolorem quibusdam quos, corporis facere est quod deserunt.</p>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <h2>Is JavaScript awesome?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>Yes! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem dolorum dolore totam quo commodi sapiente in, libero, consectetur similique, labore non provident dolorem quibusdam quos, corporis facere est quod deserunt.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    <script>
+const accordion = document.querySelector('.accordion');
+const items = accordion.querySelectorAll('li');
+const questions = accordion.querySelectorAll('.question');
+
+function toggleAccordion(){
+  const thisItem = this.parentNode;
+
+  items.forEach(item => {
+    if (thisItem == item){
+      thisItem.classList.toggle('open');
+      return;
+    }
+    item.classList.remove('open');
+  });
+
+  console.log(this.parentNode);
+}
+
+questions.forEach(question => question.addEventListener('click', toggleAccordion));
+    </script>
+  </body>
+</html>
