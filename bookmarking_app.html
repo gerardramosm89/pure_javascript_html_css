@@ -73,7 +73,8 @@
       }
 
       .bookmark {
-        display:block;
+        position: relative;
+        display:flex;
         background:#fff;
         color: #999;
         padding:20px;
@@ -97,6 +98,31 @@
       .bookmark:last-child {
         border-bottom-left-radius:5px;
         border-bottom-right-radius:5px;
+      }
+
+      .bookmark .img {
+          background-color: #DDD;
+          border-radius: 3px;
+          background-image:url('https://avatars3.githubusercontent.com/u/22526582?v=3&s=460');
+          background-size: cover;
+          width:100px;
+          height:100px;
+          margin-right: 20px;
+      }
+
+      .bookmark .title {
+        display: flex;
+        align-items: center;
+      }
+
+      .bookmark .glyphicon-remove {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #333;
+        font-size: 12px;
+        transition: .3s ease all;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -163,12 +189,23 @@
         */
         bookmarkForm.reset();
       }
+      function removeBookmark(e){
+        //find the index
+        console.log("remove bookmark was called!",e);
+        // remove from the bookmarks using splice
 
+        //fill the list
+
+        //store back to localstorage
+
+      }
       function fillBookmarksList(bookmarks = []){
         const bookmarksHtml = bookmarks.map(bookmark => {
           return `
           <a href="#" class="bookmark">
-            ${bookmark.title}
+            <div class="img"></div>
+            <div class="title">${bookmark.title}</div>
+            <span class="glyphicon glyphicon-remove" onclick="removeBookmark()"></span>
           </a>
           `;
         }).join('');
