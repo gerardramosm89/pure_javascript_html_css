@@ -168,7 +168,10 @@
       fillBookmarksList(bookmarks);
       function createBookmark(e) {
         e.preventDefault();
-
+        if (!bookmarkInput.value){
+          alert("We need info!");
+          return;
+        }
         // add a new bookmark to the bookmarks
         const title = bookmarkInput.value;
         const bookmark = {
