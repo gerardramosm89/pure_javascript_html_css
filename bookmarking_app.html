@@ -189,23 +189,29 @@
         */
         bookmarkForm.reset();
       }
-      function removeBookmark(e){
+      function removeBookmark(i){
         //find the index
-        console.log("remove bookmark was called!",e);
+        console.log("remove bookmark was called!",i);
+
+        const index = document.querySelector(`.test${i}`)
+        console.log(index);
         // remove from the bookmarks using splice
 
         //fill the list
 
         //store back to localstorage
+        bookmarks.splice(`${i}`,1);
+        fillBookmarksList(bookmarks);
+        storeBookmarks(bookmarks);
 
       }
       function fillBookmarksList(bookmarks = []){
-        const bookmarksHtml = bookmarks.map(bookmark => {
+        const bookmarksHtml = bookmarks.map((bookmark,i) => {
           return `
-          <a href="#" class="bookmark">
+          <a href="#" class="bookmark test${i}">
             <div class="img"></div>
             <div class="title">${bookmark.title}</div>
-            <span class="glyphicon glyphicon-remove" onclick="removeBookmark()"></span>
+            <span class="glyphicon glyphicon-remove" onclick="removeBookmark(${i})"></span>
           </a>
           `;
         }).join('');
