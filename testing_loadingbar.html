@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript Testing grounds</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+      * {
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .loading {
+        position: relative !important;
+        right:2px;
+        transition: ease .5s all;
+        width:100px;
+        height:40px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div style="margin-top:25%">
+  <h1>Loading...</h1>
+  <div class="btn btn-info loading"></div>
+</div><!-- end jumbotron -->
+
+
+
+    <script>
+    var left = true;
+    var box = document.querySelector('.loading');
+    function move(){
+      if (!left){
+        box.style.left = 300 + "px";
+        left = true;
+      } else {
+        box.style.left = 0 + "px";
+        left = false;
+      }
+    }
+    setInterval(move, 500);
+
+    </script>
+  </body>
+</html>
